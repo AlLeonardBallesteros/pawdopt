@@ -1,0 +1,163 @@
+.contact-us{
+  display: grid;
+  grid-template-columns: .5fr .5fr;
+  grid-template-rows: .2fr 0.01fr 1fr;
+  grid-template-areas: 
+  "contact contact"
+  "question question"
+  "appointment contact-info";
+  background-color: white;
+}
+#bg-image{
+  grid-area: contact;
+}
+.questions{
+  grid-area: question;
+  text-align: center;
+}
+.questions h1{
+  font-size: 45px;
+}
+.contact-info {
+  grid-area: contact-info;
+  justify-content: start;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  margin-top: 10px;
+
+}
+.appointment {
+  grid-area: appointment;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #B0DC9B;
+  width: 60%;
+  height: 580px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column; 
+}
+
+.appointment h1 {
+  text-align: center;
+  font-size: 18px;
+}
+
+.appointment Button {
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  height: 35px;
+  background-color: #6DBB48;
+  margin-top: 20px;
+}
+.appointment textarea{
+  width: 400px;
+  height: 100px;
+  max-width: 400px;
+  max-height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  
+}
+.contact-us Form Label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.appointment input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+.icon-about-us {
+  margin-right: 10px;
+}
+.service-info,
+.store-hours,
+.mailing-address {
+  text-align: left;
+  margin-left: 5px;
+  white-space: normal;
+}
+.service-info h2,
+.store-hours h2,
+.mailing-address h2 {
+  font-size: 40px;
+  margin-top: 20px;
+  text-align: left;
+  margin-left: 20px;
+}
+.service-info p,
+.store-hours p,
+.mailing-address p{
+  margin-bottom: 10px;
+  text-align: left;
+  align-items: center;
+  flex-basis: 33.33%;
+  font-size: 20px;
+}
+@media (max-width:663px){
+  .appointment textarea {
+    height: 100px;
+    max-width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .contact-us{
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 0.02fr 1fr 1fr;
+    grid-template-areas:
+  "contact"
+  "question"
+  "appointment" 
+  "contact-info";
+  }
+  .contact-us img {
+    max-height: auto;
+    max-width: 100%;
+  }
+  .contact-info p{
+    font-size: 15px;
+  }
+  .questions h1{
+    font-size: 30px;
+  }
+
+  .appointment {
+    width: 80%;
+  }
+
+  .appointment Button {
+    width: 50%;
+  }
+
+  .appointment textarea {
+    height: 100px;
+    width: 300px;
+  }
+}
+@media (max-width:900px){
+  .appointment textarea {
+    height: 100px;
+    width: 300px;
+  }
+}
+@media (max-width:1501px){
+  .appointment textarea {
+    height: 100px;
+    width: 100px;
+  }
+}

@@ -1,0 +1,35 @@
+.uploaded-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    margin: 50px auto 10px 10px;
+  }
+  .uploaded-images > div {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .uploaded-images img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    margin: 10px auto 5px 10px;
+  }
+  .uploaded-images p {
+    margin: 10px 0;
+  }
+  
+  .uploaded-images button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  
