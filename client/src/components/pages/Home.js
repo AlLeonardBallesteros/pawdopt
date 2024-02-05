@@ -42,7 +42,7 @@ function Home() {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           width: 'auto',
-          height: '600px',
+          height: '400px',
         }}
         ref={imageRef}
       >

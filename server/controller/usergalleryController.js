@@ -11,25 +11,38 @@ const storage = multer.diskStorage({
   });
   
   const upload = multer({ storage: storage });
-  
+
+
   const userHandleupload = async (req, res) => {
     try {
-      const { caption, breed, gender, age, medhistory } = req.body;
-      if (!req.file) {
-        return res.status(400).json({ success: false, message: 'No file uploaded' });
-      }
-      const imageUrl = req.file.filename;
-  
-      // Save the data to MongoDB
-      const newItem = new UserGallery({ caption, imageUrl, breed, gender, age, medhistory });
-      await newItem.save();
-  
-      res.json({ success: true, message: 'Upload successful' });
+        const { caption, breed, gender, age, medhistory } = req.body;
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ success: false, message: 'No files uploaded' });
+        }
+        
+        // Map through the array of files and save each one to MongoDB
+        const newItemPromises = req.files.map(file => {
+            const newItem = new UserGallery({ 
+                caption, 
+                imageUrl: file.filename, 
+                breed, 
+                gender, 
+                age, 
+                medhistory 
+            });
+            return newItem.save();
+        });
+        
+        // Wait for all items to be saved
+        await Promise.all(newItemPromises);
+        
+        res.json({ success: true, message: 'Upload successful' });
     } catch (error) {
-      console.error('Error handling upload:', error);
-      res.status(500).json({ success: false, message: 'Server error', error: error.message });
+        console.error('Error handling upload:', error);
+        res.status(500).json({ success: false, message: 'Server error', error: error.message });
     }
-  };
+};
+
   
 
   const usergetGallery = async (req, res) => {

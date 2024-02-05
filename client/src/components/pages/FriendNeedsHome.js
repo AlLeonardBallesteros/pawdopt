@@ -28,8 +28,15 @@ function FriendNeedsHome() {
     setAge(event.target.value);
   };
   const handleEditMedHistory = (event) => {
-    setMedHistory(event.target.value);
-  };
+    const { value } = event.target;
+    if (medhistory.includes(value)) {
+        // If already selected, remove it from the array
+        setMedHistory(medhistory.filter(term => term !== value));
+    } else {
+        // If not selected, add it to the array
+        setMedHistory([...medhistory, value]);
+    }
+};
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -50,7 +57,7 @@ function FriendNeedsHome() {
   const handleAddToGallery = async () => {
     try {
       const formData = new FormData();
-      formData.append("image", selectedImage);
+      formData.append("images", selectedImage);
       formData.append("caption", caption);
       formData.append("breed", breed);
       formData.append("gender", gender);
@@ -108,7 +115,7 @@ function FriendNeedsHome() {
         </button>
         {isFormVisible && (
           <div>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
+            <input type="file" accept="images/*" onChange={handleFileChange} multiple/>
             <input
               type="text"
               placeholder="Caption"
@@ -136,12 +143,44 @@ function FriendNeedsHome() {
               onChange={handleEditAge}
             />
 
-            <input
-              type="text"
-              placeholder="Medical History"
-              value={medhistory}
-              onChange={handleEditMedHistory}
-            />
+            <div>
+                {/* Assuming medhistory is an array of selected medical terms */}
+                <label>Medical History:</label>
+                <div>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="vaccinated"
+                            checked={medhistory.includes("vaccinated")}
+                            onChange={handleEditMedHistory}
+                        />
+                        Vaccinated
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="dewormed"
+                            checked={medhistory.includes("dewormed")}
+                            onChange={handleEditMedHistory}
+                        />
+                        Dewormed
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="neutered"
+                            checked={medhistory.includes("neutered")}
+                            onChange={handleEditMedHistory}
+                        />
+                        Neutered
+                    </label>
+                </div>
+                {/* Add more checkboxes for other medical terms as needed */}
+            </div>
             <button onClick={handleAddToGallery}>Add to Gallery</button>
           </div>
         )}
@@ -158,7 +197,6 @@ function FriendNeedsHome() {
               alt={item.caption}
               className="gallery-images"
             />
-            <button onClick={() => openModal(item.imageUrl, item.caption, item.breed, item.gender, item.age, item.medhistory)}>Click here to see details</button>
           </div>
         ))}
       </div>

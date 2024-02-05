@@ -13,7 +13,7 @@ const  handleFormSubmission  = require('./controller/formController');
 
 const app = express();
 
-const uri = "mongodb+srv://data01373:hBrdfIn5EGqeQY0a@cluster0.tqvgwks.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://data01373:OepnDoJnQNUaTZ5g@cluster0.tqvgwks.mongodb.net/?retryWrites=true&w=majority";
 
 async function connect() {
   try {
@@ -31,6 +31,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Serve uploaded images from the 'uploads' directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+//check on seclected port if the backend runs sucessfully
 app.get("/", (req, res) => {
   res.send("ako to");
 }); 
@@ -48,7 +50,7 @@ app.put('/api/gallery/:id', galleryController.editImage);
 app.delete('/api/gallery/:id', galleryController.deleteImage);
 
 //user upload image
-app.post('/api/user/upload', usergalleryController.upload.single('image'), usergalleryController.userHandleupload);
+app.post('/api/user/upload', usergalleryController.upload.array('images', 5), usergalleryController.userHandleupload);
 app.get('/api/user/gallery', usergalleryController.usergetGallery);
 app.delete('/api/user/gallery/:id', usergalleryController.userdeleteImage);
 
