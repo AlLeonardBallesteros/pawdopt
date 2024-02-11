@@ -6,11 +6,14 @@ import SuccessfullyAdopted from "../pages/SuccessfullyAdopted";
 import FriendNeedsHome from "../pages/FriendNeedsHome";
 import Contacts from '../pages/Contacts'
 import How from '../pages/How'
+import Login from "../pages/login/Login";
+import Signup from "../pages/signup/Signup";
 import JoinUs from '../pages/JoinUs'
 import Help from "../pages/Help";
 import ForgotPassword from '../pages/ForgotPassword';
 import NewSubmit from "../pages/NewSubmit";
 import AdminDashboard from "../adminpanel/dashboard/AdminDashboard";
+
 
 
 
@@ -27,6 +30,8 @@ function Router() {
         <Route path="available-to-adopt" element={<FriendNeedsHome />} />
         <Route path="contact-us" element={<Contacts />} />
         <Route path="how-to" element={<How />} />
+        <Route path="login" element={<Login/>} />
+        <Route path="signup" element={<Signup/>} />
         <Route path="join-us" element={<JoinUs/>} />
         <Route path="help-us" element={<Help/>} />
         <Route path="forgot-password" element ={<ForgotPassword/>} />

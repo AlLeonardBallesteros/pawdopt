@@ -54,7 +54,7 @@ export const Header = () => {
           <NavLink to="/how-to">FAQs</NavLink>
         </li>
         <li>
-          <NavLink to="/join-us">Join us</NavLink>
+          <NavLink to="/signup">Join us</NavLink>
         </li>
         <li>
           <NavLink to="/help-us">Help us</NavLink>
